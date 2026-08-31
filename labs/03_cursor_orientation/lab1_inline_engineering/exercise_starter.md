@@ -6,48 +6,16 @@
 
 ---
 
-## Exercise 1: Ghost Text Tab Shaping Log
-
-Navigate to `src/core/services/task.service.ts` -> `filterTasksByPriorityAndDate`.
-
-1. **Initial Unfiltered Suggestion**: What did Cursor suggest when pressing `Tab` once without constraints? (Did it try to import `lodash` or omit null checks?)
-```typescript
-// Paste initial raw suggestion here:
-
-```
-
-2. **Accepted Refactored Implementation** (Shaped word-by-word via `Cmd+Right` / `Ctrl+Right`):
-```typescript
-// Paste your final accepted TypeScript code here:
-
-```
+## Instructions (updated)
+Perform the three inline-editing exercises using your editor’s Cursor/inline-AI features. For every generated suggestion you accept, record: (A) the raw ghost-text or inline suggestion, (B) the exact keyboard actions or inline prompt you used, (C) the final accepted code, and (D) any diff lines you rejected with a short reason. Be strict: reject any suggestion that adds third-party dependencies, removes telemetry/type assertions, or introduces unbounded memory structures.
 
 ---
 
-## Exercise 2: `Cmd/Ctrl+K` Inline Prompt Formulation
+## Exercise 1: Ghost Text Tab Shaping Log (filterTasksByPriorityAndDate)
 
-Navigate to `src/api/middleware/rate-limiter.ts` -> `applyRateLimiting`.
+File: `src/core/services/task.service.ts`  
+Function: `filterTasksByPriorityAndDate(tasks, priority, sinceDate)`
 
-1. **Your Exact `Cmd/Ctrl+K` Prompt**:
-```text
-[PASTE YOUR INLINE PROMPT HERE]
-```
-
-2. **Inline Diff Checklist**:
-- [ ] Preserved function signature `(req: Request, res: Response, next: NextFunction)`
-- [ ] Used in-memory sliding window algorithm (timestamp array or bucket)
-- [ ] Returned HTTP 429 using project standard envelope `{ success: false, data: null, error: { code: "RATE_LIMIT_EXCEEDED", message: "..." } }`
-- [ ] Used `logger.warn` instead of `console.log`
-- [ ] Cleaned up stale entries to prevent memory leak
-
----
-
-## Exercise 3: Diff Review Audit & Rejection Analysis
-
-During the inline edit of `src/utils/crypto.ts` (`sanitizeUserEmail`):
-
-1. **Did Cursor attempt to rewrite surrounding unchanged helper methods?**: [ ] YES / [ ] NO
-2. **What line(s) in the generated diff did you manually reject or adjust?**:
-```text
-[EXPLAIN ANY REJECTED DIFF LINES HERE]
-```
+1. Paste the initial raw ghost-text suggestion you saw when you pressed `Tab` (single accept) here:
+```typescript
+// Raw ghost-text suggestion (paste verbatim)
