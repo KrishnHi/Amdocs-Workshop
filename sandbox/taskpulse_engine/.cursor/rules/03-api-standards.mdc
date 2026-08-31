@@ -1,0 +1,18 @@
+---
+description: REST API Standards, Routing Conventions and Validation
+globs: ["src/api/**/*.ts"]
+alwaysApply: true
+---
+
+# REST API Standards:
+1. **URI Conventions**:
+   - Resource paths must be plural lowercase nouns (e.g., `/tasks`, `/webhooks/subscriptions`).
+2. **Status Codes**:
+   - `200 OK` for reads and successful synchronous mutations.
+   - `201 Created` for new resource allocations.
+   - `202 Accepted` for asynchronous batch jobs.
+   - `400 Bad Request` for missing required schema parameters.
+   - `404 Not Found` when entity ID does not exist.
+   - `429 Too Many Requests` when rate limits are breached.
+3. **No Any Types**:
+   - Explicitly type request parameters, bodies, and responses. Avoid `any` castings.

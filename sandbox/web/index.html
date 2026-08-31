@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise AI Engineering Sandbox | Prompt Engineering, Critical Verification & Cursor Testbench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Corporate Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-symbol">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title-row">
+            <h1>Enterprise AI Engineering Testbench</h1>
+            <span class="version-tag">v3.0 Multi-Module LTS</span>
+          </div>
+          <p class="subtitle">Techademy Technical Enablement: Prompt Engineering, Critical Verification & Cursor IDE Orientation</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="target-level-pill">
+          <span class="status-dot"></span>
+          Trainee & Associate Track
+        </div>
+        <button id="loadSolutionBtn" class="btn btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+          Load Reference Specification
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="module-group-bar">
+      <div class="module-group-title">Module 1 & 2 Practicals</div>
+      <div class="module-group-title">Module 3: Cursor Orientation & Multi-File Agentics</div>
+    </div>
+
+    <nav class="nav-tabs">
+      <!-- Module 1 -->
+      <button class="tab-btn active" data-tab="tab-triage">
+        <span class="tab-badge">M1</span>
+        <span class="tab-label">1.1 Incident Triage</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cot">
+        <span class="tab-badge">M1</span>
+        <span class="tab-label">1.2 CoT Code Review</span>
+      </button>
+
+      <!-- Module 2 -->
+      <button class="tab-btn" data-tab="tab-audit">
+        <span class="tab-badge">M2</span>
+        <span class="tab-label">2.1 Hallucination Audit</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-fallacy">
+        <span class="tab-badge">M2</span>
+        <span class="tab-label">2.2 Fallacy Assessment</span>
+      </button>
+
+      <!-- Module 3 -->
+      <button class="tab-btn" data-tab="tab-cursor-inline">
+        <span class="tab-badge m3">M3</span>
+        <span class="tab-label">3.1 Inline & Ghost Text</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cursor-context">
+        <span class="tab-badge m3">M3</span>
+        <span class="tab-label">3.2 Context & .cursorrules</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cursor-composer">
+        <span class="tab-badge m3">M3</span>
+        <span class="tab-label">3.3 Multi-File Composer</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tab-cursor-adversarial">
+        <span class="tab-badge m3">M3</span>
+        <span class="tab-label">3.4 Red-Team Diff Audit</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1.1: Incident Triage -->
+    <main id="tab-triage" class="tab-content active">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 1.1: Structured Incident Triage & Injection Defense</h2>
+          <span class="module-code">MODULE 01 &bull; LAB 01</span>
+        </div>
+        <p>Evaluate production prompt templates against deterministic JSON schema adherence, objective SLA classification rules, and prompt injection payloads.</p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Left Panel: Prompt Editor & Test Selector -->
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Prompt Template Editor</h3>
+            <span class="badge">Parameter Schema: {{TICKET_ID}}, {{TICKET_BODY}}</span>
+          </div>
+          <textarea id="triagePromptInput" class="code-editor" placeholder="Author production prompt template with delimiters, schema specifications, and SLA rules..."></textarea>
+          
+          <div class="test-selector-bar">
+            <label class="control-label">Evaluation Test Case:</label>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-outline active" data-case="A">Case A: P1 Outage</button>
+              <button class="btn btn-sm btn-outline" data-case="B">Case B: Caps Sentiment</button>
+              <button class="btn btn-sm btn-outline" data-case="C">Case C: Injection Payload</button>
+            </div>
+          </div>
+
+          <div class="input-preview-box">
+            <div class="preview-header">Active Evaluation Payload:</div>
+            <pre id="activeTicketPreview" class="code-block"></pre>
+          </div>
+
+          <div class="action-bar">
+            <button id="runTriageBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Execute Verification
+            </button>
+            <button id="resetTriageBtn" class="btn btn-ghost">Reset Editor</button>
+          </div>
+        </div>
+
+        <!-- Right Panel: Live Evaluation & Diagnostics -->
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Verification Scorecard</h3>
+            <div id="triageScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card" id="m-valid-json">
+              <div class="m-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <span>JSON Syntax</span>
+              </div>
+              <div class="m-status">PENDING</div>
+            </div>
+            <div class="metric-card" id="m-schema">
+              <div class="m-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                <span>Schema Match</span>
+              </div>
+              <div class="m-status">PENDING</div>
+            </div>
+            <div class="metric-card" id="m-sla">
+              <div class="m-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                <span>SLA Precision</span>
+              </div>
+              <div class="m-status">PENDING</div>
+            </div>
+            <div class="metric-card" id="m-security">
+              <div class="m-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Injection Guard</span>
+              </div>
+              <div class="m-status">PENDING</div>
+            </div>
+          </div>
+
+          <div class="output-wrapper">
+            <label class="control-label">Parsed Output JSON Record:</label>
+            <pre id="triageOutputJson" class="code-block json-viewer">// Awaiting prompt execution...</pre>
+          </div>
+
+          <div class="diagnostics-box">
+            <h4>Static Analysis & Diagnostics:</h4>
+            <ul id="triageDiagnosticsList" class="diagnostics-list">
+              <li>Click "Execute Verification" to trigger automated evaluation against SLA criteria.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 1.2: CoT Code Reviewer -->
+    <main id="tab-cot" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 1.2: Chain-of-Thought Code Review & Defect Diagnostic Engine</h2>
+          <span class="module-code">MODULE 01 &bull; LAB 02</span>
+        </div>
+        <p>Validate 5-stage decomposed reasoning, boundary condition dry runs, and execute automated unit test assertions on code fixes.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Target Implementation Under Review</h3>
+            <span class="badge">Python 3.10+ Standard Library</span>
+          </div>
+          <pre class="code-block python-code"><code>def calculate_loyalty_tier(spend_amount, account_age_months, is_vip=False):
+    # Boundary defects: Uses '>' rather than '>=' on tier thresholds
+    if spend_amount &lt;= 0:
+        return {"tier": "Inactive", "discount": 0.0}
+    if is_vip:
+        tier = "Platinum"; discount = 0.20
+    elif spend_amount &gt; 5000 and account_age_months &gt; 24: # &lt;-- Defect
+        tier = "Platinum"; discount = 0.20
+    elif spend_amount &gt; 2000 and account_age_months &gt; 12: # &lt;-- Defect
+        tier = "Gold"; discount = 0.15
+    elif spend_amount &gt; 500 and account_age_months &gt; 6:   # &lt;-- Defect
+        tier = "Silver"; discount = 0.10
+    else:
+        tier = "Bronze"; discount = 0.0
+    return {"tier": tier, "discount": discount}</code></pre>
+
+          <div class="panel-header" style="margin-top: 15px;">
+            <h3>Submitted 5-Stage Review & Refactored Implementation</h3>
+          </div>
+          <textarea id="cotReviewInput" class="code-editor" style="height: 240px;" placeholder="Paste the complete 5-stage markdown review and code fix here..."></textarea>
+          
+          <div class="action-bar">
+            <button id="runCotBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Execute Unit Test Assertions
+            </button>
+            <button id="loadCotSolBtn" class="btn btn-secondary">Load Master Solution</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Automated Test Suite & Assertion Results</h3>
+            <div id="cotScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="stage-checker">
+            <label class="control-label">Five-Stage Analytical Progression:</label>
+            <div class="stage-pills">
+              <span class="pill" id="stg-1">1. Boundary Matrix</span>
+              <span class="pill" id="stg-2">2. CoT Dry Run</span>
+              <span class="pill" id="stg-3">3. Defect Diagnosis</span>
+              <span class="pill" id="stg-4">4. Code Fix</span>
+              <span class="pill" id="stg-5">5. Assertions</span>
+            </div>
+          </div>
+
+          <div class="unit-tests-box">
+            <label class="control-label">Boundary Value Assertions (7 Tests):</label>
+            <div id="unitTestResultsList" class="test-results-list">
+              <div class="test-row pending"><span>Zero/Negative Spend ($0)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Bronze Base ($200, 3mo)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Silver Boundary ($500, 6mo)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Gold Boundary ($2000, 12mo)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Platinum Boundary ($5000, 24mo)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>VIP Override ($10, 1mo, True)</span><span>PENDING</span></div>
+            </div>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 15px;">
+            <h4>Diagnostic Summary:</h4>
+            <ul id="cotDiagnosticsList" class="diagnostics-list">
+              <li>Submit review to run boundary assertion tests and verify structural decomposition.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 2.1: Hallucination Audit -->
+    <main id="tab-audit" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 2.1: AI Hallucination & Empirical Evidence Audit Matrix</h2>
+          <span class="module-code">MODULE 02 &bull; LAB 01</span>
+        </div>
+        <p>Critically inspect claims from an AI cloud proposal. Classify each claim into Fact, Inference, Opinion, or Hallucination.</p>
+      </div>
+
+      <div class="audit-container">
+        <div class="audit-list" id="auditClaimsList">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+        <div class="audit-summary-panel">
+          <div class="panel-header">
+            <h3>Audit Scorecard</h3>
+            <div id="auditScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+          <button id="validateAuditBtn" class="btn btn-primary btn-block">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            Validate Audit Matrix
+          </button>
+          <div id="auditFeedbackPanel" class="feedback-panel">
+            <p>Classify all six technical claims and select "Validate Audit Matrix" to inspect ground-truth empirical citations and official cloud SDK documentation.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 2.2: Fallacy Assessment -->
+    <main id="tab-fallacy" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 2.2: Architectural Fallacy & Cognitive Bias Assessment</h2>
+          <span class="module-code">MODULE 02 &bull; LAB 02</span>
+        </div>
+        <p>Unmask manipulative logical fallacies, expose unstated assumptions, and formulate balanced engineering roadmaps.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Fallacy Identification in Strategy Excerpts</h3>
+          </div>
+          <div class="fallacy-cards" id="fallacyCardsContainer">
+            <!-- Excerpts populated via app.js -->
+          </div>
+
+          <div class="action-bar">
+            <button id="checkFallaciesBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Verify Fallacy Classifications
+            </button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Unmasking Unstated Operational Assumptions</h3>
+            <div id="fallacyScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+          
+          <p class="desc-text">Select all omitted operational prerequisites and hidden risks:</p>
+          
+          <div class="assumptions-checklist">
+            <label class="check-item">
+              <input type="checkbox" id="assump-1" data-valid="true">
+              <span><strong>DevOps Competency:</strong> Assumes engineering squads already possess production mastery in Kubernetes, Istio, and distributed tracing.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="assump-2" data-valid="true">
+              <span><strong>Network Latency & Consistency:</strong> Assumes 35 network hops carry zero latency penalty and require no distributed Saga coordination.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="assump-3" data-valid="true">
+              <span><strong>Root Cause Misattribution:</strong> Assumes 3-week release cycle is caused by monolith topology rather than lack of automated CI/CD pipelines.</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="assump-distractor" data-valid="false">
+              <span><strong>Hardware Depreciation:</strong> Assumes global cloud data center hardware will become physically unavailable.</span>
+            </label>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 20px;">
+            <h4>Engineering Leadership Review:</h4>
+            <div id="fallacyDebriefBox" class="debrief-content">
+              Complete the classification matrix and assumption selection to generate the strategic debrief.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 3.1: Inline AI Engineering -->
+    <main id="tab-cursor-inline" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 3.1: Inline AI Engineering — Ghost Text & In-Place Refactoring</h2>
+          <span class="module-code">MODULE 03 &bull; LAB 01</span>
+        </div>
+        <p>Master line-by-line predictive Ghost Text shaping and test <code>Cmd/Ctrl+K</code> inline prompts for memory leaks, error schemas, and local scope preservation.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Cmd/Ctrl+K Inline Refactoring Testbench</h3>
+            <span class="badge">Target: src/api/middleware/rate-limiter.ts</span>
+          </div>
+          <p class="desc-text">Test your inline refactoring prompt for the in-memory sliding-window rate limiter:</p>
+          <textarea id="inlinePromptInput" class="code-editor" style="height: 160px;" placeholder="Implement an in-memory sliding-window rate limiter (100 req/60s)..."></textarea>
+          
+          <div class="action-bar">
+            <button id="testInlinePromptBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Simulate Inline Edit
+            </button>
+            <button id="loadInlineSolBtn" class="btn btn-secondary">Load Master Prompt</button>
+          </div>
+
+          <div class="diff-viewer-wrapper" style="margin-top: 15px;">
+            <div class="preview-header">Generated In-Editor Diff Preview:</div>
+            <pre id="inlineDiffViewer" class="code-block diff-code">// Click 'Simulate Inline Edit' to generate and inspect inline diff...</pre>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Inline Diff Quality Scorecard</h3>
+            <div id="inlineScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="checklist-container">
+            <label class="control-label">Diff Inspection Checklist:</label>
+            <div class="check-item-list">
+              <div class="diff-check-row" id="chk-window"><span class="check-icon">○</span> Sliding-Window Algorithm & Limit Threshold Defined</div>
+              <div class="diff-check-row" id="chk-envelope"><span class="check-icon">○</span> Strict HTTP 429 Error Envelope Conformity</div>
+              <div class="diff-check-row" id="chk-leak"><span class="check-icon">○</span> Memory Leak Prevention (Stale Key Cleanup)</div>
+              <div class="diff-check-row" id="chk-logger"><span class="check-icon">○</span> Zero Console Logging (Structured Logger Only)</div>
+              <div class="diff-check-row" id="chk-pure"><span class="check-icon">○</span> No Extraneous Third-Party Dependencies (Pure TS)</div>
+            </div>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 20px;">
+            <h4>Static Code Analysis Diagnostics:</h4>
+            <ul id="inlineDiagnosticsList" class="diagnostics-list">
+              <li>Awaiting inline prompt execution...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 3.2: Context & Rule Engine -->
+    <main id="tab-cursor-context" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 3.2: Context Engineering, Scoped Q&A & .cursorrules</h2>
+          <span class="module-code">MODULE 03 &bull; LAB 02</span>
+        </div>
+        <p>Compare ungrounded vs @-scoped codebase queries and validate project-level MDC rulesets in <code>.cursor/rules/</code>.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>.cursor/rules/01-error-handling.mdc Rule Editor</h3>
+            <span class="badge">MDC YAML Frontmatter</span>
+          </div>
+          <textarea id="contextRuleInput" class="code-editor" style="height: 220px;" placeholder="---\ndescription: Global Error Handling\nglobs: ['src/**/*.ts']\nalwaysApply: true\n---\n\n# Rules:\n..."></textarea>
+          
+          <div class="panel-header" style="margin-top: 15px;">
+            <h3>Scoped Chat Q&A Prompt</h3>
+            <span class="badge">Target Concurrency Bug in task.service.ts</span>
+          </div>
+          <textarea id="contextPromptInput" class="code-editor" style="height: 100px;" placeholder="@src/core/services/task.service.ts @src/core/models/task.model.ts\nTrace shallow spread overwrite in updateTaskStatus..."></textarea>
+
+          <div class="action-bar">
+            <button id="testContextBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Verify Context & Rules
+            </button>
+            <button id="loadContextSolBtn" class="btn btn-secondary">Load Master Ruleset</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Rule Compliance & Diagnostic Engine</h3>
+            <div id="contextScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="chat-trace-box">
+            <label class="control-label">Grounded Codebase Analysis Simulation:</label>
+            <div id="chatTraceOutput" class="trace-output-view">
+              // Submit prompt to simulate Cursor Chat's indexed file retrieval...
+            </div>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 15px;">
+            <h4>Validation Matrix:</h4>
+            <ul id="contextDiagnosticsList" class="diagnostics-list">
+              <li>Awaiting validation...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 3.3: Multi-File Composer -->
+    <main id="tab-cursor-composer" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 3.3: Multi-File Orchestration via Composer / Agent</h2>
+          <span class="module-code">MODULE 03 &bull; LAB 03</span>
+        </div>
+        <p>Coordinate multi-file feature builds across models, services, routers, and test suites with selective diff acceptance.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Master Composer Agent Prompt</h3>
+            <span class="badge">Agent Mode (Cmd/Ctrl+I)</span>
+          </div>
+          <textarea id="composerPromptInput" class="code-editor" style="height: 220px;" placeholder="@src/core/ @src/api/ @docs/architecture.md\nTASK: Implement Webhook Event Dispatcher...\n1. In audit.model.ts...\n2. In notification.ts...\nCONSTRAINTS: Do not touch client.ts"></textarea>
+          
+          <div class="action-bar">
+            <button id="runComposerBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Execute Composer Plan
+            </button>
+            <button id="loadComposerSolBtn" class="btn btn-secondary">Load Master Agent Prompt</button>
+          </div>
+
+          <div class="file-tree-panel" style="margin-top: 15px;">
+            <div class="preview-header">Target Files in Composer Queue:</div>
+            <div class="file-tree-list">
+              <div class="tree-item"><span class="tag mod">MOD</span> <code>src/core/models/audit.model.ts</code></div>
+              <div class="tree-item"><span class="tag mod">MOD</span> <code>src/core/services/notification.ts</code></div>
+              <div class="tree-item"><span class="tag mod">MOD</span> <code>src/core/services/task.service.ts</code></div>
+              <div class="tree-item"><span class="tag new">NEW</span> <code>src/api/routes/webhooks.ts</code></div>
+              <div class="tree-item"><span class="tag mod">MOD</span> <code>src/api/server.ts</code></div>
+              <div class="tree-item"><span class="tag new">NEW</span> <code>tests/unit/webhook.spec.ts</code></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Composer Step Tree & Verification</h3>
+            <div id="composerScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="execution-steps-tree" id="composerExecutionTree">
+            <div class="exec-step-placeholder">Submit Master Agent prompt to inspect multi-file plan generation and test execution.</div>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 15px;">
+            <h4>Agent Diagnostics & Test Suite:</h4>
+            <ul id="composerDiagnosticsList" class="diagnostics-list">
+              <li>Awaiting execution...</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 3.4: Adversarial Red-Team Diff Audit -->
+    <main id="tab-cursor-adversarial" class="tab-content">
+      <div class="lab-intro">
+        <div class="intro-header">
+          <h2>Practical 3.4: The "Critical Eye" — Adversarial Diff Auditing & Capstone</h2>
+          <span class="module-code">MODULE 03 &bull; LAB 04</span>
+        </div>
+        <p>Red-team AI-generated code to catch 4 subtle security traps: Insecure PRNG, Timing Attacks, Unbounded OOM Buffers, and Silent Error Swallowing.</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Plant Trap Scanner (Raw AI Diff)</h3>
+            <span class="badge">Export Subsystem</span>
+          </div>
+          <div class="raw-diff-box">
+            <pre class="code-block diff-code"><code><span class="diff-del">// Trap A: Insecure PRNG</span>
+<span class="diff-del">- return Math.random().toString(36).substring(2);</span>
+<span class="diff-add">+ return crypto.randomBytes(32).toString('hex');</span>
+
+<span class="diff-del">// Trap B: Timing Leak</span>
+<span class="diff-del">- return providedSig === expectedSig;</span>
+<span class="diff-add">+ return crypto.timingSafeEqual(bufA, bufB);</span>
+
+<span class="diff-del">// Trap C: Unbounded RAM Buffer</span>
+<span class="diff-del">- const all = db.all(); return JSON.stringify(all);</span>
+<span class="diff-add">+ for await (const chunk of exportTasksChunked()) { ... }</span>
+
+<span class="diff-del">// Trap D: Silent Error Swallowing</span>
+<span class="diff-del">- try { notify(); } catch (e) {}</span>
+<span class="diff-add">+ try { notify(); } catch (e) { logger.error(e); }</span></code></pre>
+          </div>
+
+          <div class="panel-header" style="margin-top: 15px;">
+            <h3>Submit Hardened PR Diff / Worksheet</h3>
+          </div>
+          <textarea id="adversarialDiffInput" class="code-editor" style="height: 180px;" placeholder="Paste audited PR diff and test suite execution logs here..."></textarea>
+          
+          <div class="action-bar">
+            <button id="runAdversarialBtn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Run Security Assertions
+            </button>
+            <button id="loadAdversarialSolBtn" class="btn btn-secondary">Load Audited Solution</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Adversarial Trap Scorecard</h3>
+            <div id="adversarialScoreTag" class="score-tag">Score: --/100</div>
+          </div>
+
+          <div class="trap-cards-grid">
+            <div class="trap-card" id="trap-card-a">
+              <div class="trap-title">Trap A: Insecure PRNG</div>
+              <div class="trap-status">PENDING</div>
+            </div>
+            <div class="trap-card" id="trap-card-b">
+              <div class="trap-title">Trap B: Timing Attack</div>
+              <div class="trap-status">PENDING</div>
+            </div>
+            <div class="trap-card" id="trap-card-c">
+              <div class="trap-title">Trap C: Unbounded OOM Buffer</div>
+              <div class="trap-status">PENDING</div>
+            </div>
+            <div class="trap-card" id="trap-card-d">
+              <div class="trap-title">Trap D: Silent Catch Block</div>
+              <div class="trap-status">PENDING</div>
+            </div>
+          </div>
+
+          <div class="security-assertions-box" style="margin-top: 15px;">
+            <label class="control-label">Security & Integrity Unit Tests:</label>
+            <div id="secTestResults" class="test-results-list">
+              <div class="test-row pending"><span>CSPRNG Entropy Test (256-bit)</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Constant-Time HMAC Equality</span><span>PENDING</span></div>
+              <div class="test-row pending"><span>Chunked Batch Stream Pressure</span><span>PENDING</span></div>
+            </div>
+          </div>
+
+          <div class="diagnostics-box" style="margin-top: 15px;">
+            <h4>Red-Team Evaluation Summary:</h4>
+            <ul id="adversarialDiagnosticsList" class="diagnostics-list">
+              <li>Submit audited diff to run security test suites and verify neutralization of all 4 traps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Corporate Footer -->
+    <footer class="app-footer">
+      <div>Techademy Applied AI Curriculum &bull; Enterprise Enablement Track</div>
+      <div class="footer-links">
+        <a href="../README.md" target="_blank">Sandbox Docs</a> &bull;
+        <a href="../../labs/01_prompt_engineering/lab1_structured_triage/README.md" target="_blank">Lab 1.1</a> &bull;
+        <a href="../../labs/01_prompt_engineering/lab2_cot_code_reviewer/README.md" target="_blank">Lab 1.2</a> &bull;
+        <a href="../../labs/02_critical_thinking/lab1_hallucination_audit/README.md" target="_blank">Lab 2.1</a> &bull;
+        <a href="../../labs/02_critical_thinking/lab2_fallacy_buster/README.md" target="_blank">Lab 2.2</a> &bull;
+        <a href="../../labs/03_cursor_orientation/lab1_inline_engineering/README.md" target="_blank">Lab 3.1</a> &bull;
+        <a href="../../labs/03_cursor_orientation/lab2_context_and_chat_qa/README.md" target="_blank">Lab 3.2</a> &bull;
+        <a href="../../labs/03_cursor_orientation/lab3_multi_file_composer/README.md" target="_blank">Lab 3.3</a> &bull;
+        <a href="../../labs/03_cursor_orientation/lab4_adversarial_diff_review_project/README.md" target="_blank">Lab 3.4</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

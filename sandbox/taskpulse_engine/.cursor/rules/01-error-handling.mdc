@@ -1,0 +1,25 @@
+---
+description: Global Error Handling and Structured Logging Standards
+globs: ["src/**/*.ts"]
+alwaysApply: true
+---
+
+# Global Error Handling & Logging Standards:
+1. **Never use `console.log`, `console.error`, or `console.warn`**.
+   - Always import and use `{ logger }` from `../../utils/logger` (or `@utils/logger`).
+2. **Standard API Response Envelope**:
+   All HTTP responses must strictly conform to:
+   ```typescript
+   interface ApiResponse<T> {
+     success: boolean;
+     data: T | null;
+     error: {
+       code: string;
+       message: string;
+       details?: Record<string, unknown>;
+     } | null;
+   }
+   ```
+3. **Route Handlers**:
+   - Wrap async Express route logic in `try/catch` and pass unhandled exceptions to `next(err)`.
+   - Always assign explicit HTTP status codes (200, 201, 400, 404, 429, 500).

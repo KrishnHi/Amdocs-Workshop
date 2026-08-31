@@ -1,0 +1,18 @@
+---
+description: Cryptographic & Data Security Boundary Constraints
+globs: ["src/**/*.ts"]
+alwaysApply: true
+---
+
+# Security Boundaries:
+1. **Secure Cryptographic Primitives**:
+   - Never use `Math.random()` for token, session, or secret generation.
+   - Always use `crypto.randomBytes(32).toString('hex')` from Node's built-in `crypto` module.
+2. **Timing Safe Equality**:
+   - Never use `===` or `==` when comparing cryptographic HMACs, hashes, or auth tokens.
+   - Always use `crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b))` with equal-length checks.
+3. **Input Sanitization**:
+   - Validate and sanitize all user-supplied route parameters (`id`, `email`, `query`).
+   - For string searches or database queries, use parameterized criteria; never concatenate raw strings.
+4. **Data Protection**:
+   - Never log plain-text passwords, tokens, or PII into loggers or response errors.

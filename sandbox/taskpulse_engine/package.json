@@ -1,0 +1,28 @@
+{
+  "name": "taskpulse-engine",
+  "version": "1.0.0",
+  "description": "Enterprise Task Orchestration & Audit Engine — Cursor IDE Orientation Sandbox",
+  "main": "dist/api/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/api/server.ts",
+    "dev": "ts-node-dev --respawn src/api/server.ts",
+    "test": "jest tests/unit",
+    "test:security": "jest tests/security",
+    "test:all": "jest",
+    "test:sanity": "jest tests/unit/task.service.spec.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
