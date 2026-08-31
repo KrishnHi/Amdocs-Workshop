@@ -1,16 +1,49 @@
 import { Request, Response, NextFunction } from "express";
 import { logger } from "../../utils/logger";
 
+interface ClientRateLimitState {
+  timestamps: number[];
+}
+
+const rateLimitStore = new Map<string, ClientRateLimitState>();
+const WINDOW_MS = 60 * 1000;
+const MAX_REQUESTS = 100;
+
 /**
- * ============================================================================
- * LAB 3.1 EXERCISE 2: INLINE EDIT REFACTORING (Cmd/Ctrl+K)
- * ============================================================================
- * Trainee Task: Highlight the applyRateLimiting function below and use Cmd/Ctrl+K
- * to generate an in-memory sliding-window rate limiter (100 req / 60s per client IP)
- * that cleans up stale entries and returns the standard project error envelope on HTTP 429.
+ * In-memory sliding-window limiter: 100 requests per 60s per client IP.
+ * Prunes timestamps older than the window so the Map cannot grow without bound.
  */
 export function applyRateLimiting(req: Request, res: Response, next: NextFunction): void {
-  // PLACEHOLDER STUB: Replace this with your Cmd/Ctrl+K generated sliding-window logic
-  logger.debug(`[RateLimiter] Pass-through placeholder executed for ${req.ip}`);
+  const clientIp = req.ip || req.socket.remoteAddress || "unknown_client";
+  const now = Date.now();
+
+  let state = rateLimitStore.get(clientIp);
+  if (!state) {
+    state = { timestamps: [] };
+    rateLimitStore.set(clientIp, state);
+  }
+
+  state.timestamps = state.timestamps.filter((ts) => now - ts < WINDOW_MS);
+
+  if (state.timestamps.length === 0) {
+    rateLimitStore.delete(clientIp);
+    state = { timestamps: [] };
+    rateLimitStore.set(clientIp, state);
+  }
+
+  if (state.timestamps.length >= MAX_REQUESTS) {
+    logger.warn(`[RateLimiter] Rate limit exceeded for IP: ${clientIp}`);
+    res.status(429).json({
+      success: false,
+      data: null,
+      error: {
+        code: "RATE_LIMIT_EXCEEDED",
+        message: "Too many requests. Please try again later.",
+      },
+    });
+    return;
+  }
+
+  state.timestamps.push(now);
   next();
 }
