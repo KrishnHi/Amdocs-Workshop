@@ -32,6 +32,20 @@ export function verifySignature(providedSig: string, expectedSig: string): boole
  * Naive email sanitization function (Target for Lab 3.1 Task 3 Inline Edit)
  */
 export function sanitizeUserEmail(rawEmail: string): string {
-  // Deliberately simplistic placeholder for trainees to refactor via Cmd/Ctrl+K
-  return rawEmail ? rawEmail.trim() : "";
+  if (!rawEmail || typeof rawEmail !== "string") {
+    throw new Error("INVALID_EMAIL_FORMAT: Email must be a non-empty string.");
+  }
+  const trimmed = rawEmail.trim();
+  const parts = trimmed.split("@");
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    throw new Error("INVALID_EMAIL_FORMAT: Malformed email structure.");
+  }
+  const local = parts[0];
+  const domain = parts[1].toLowerCase();
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const full = `${local}@${domain}`;
+  if (!emailRegex.test(full)) {
+    throw new Error("INVALID_EMAIL_FORMAT: Email does not match RFC 5322 regex.");
+  }
+  return full;
 }
