@@ -23,10 +23,10 @@ Complete the structural specification in Section 1 and craft your master prompt 
 
 ## Section 2: Master Production Prompt Template
 
-```text
-[INSERT PARAMETERIZED PRODUCTION PROMPT TEMPLATE HERE]
-Include dynamic placeholders {{TICKET_ID}} and {{TICKET_BODY}}.
 ```
+Use the following as the user prompt. Replace the enclosed ticket content (inside ) with the exact raw ticket data you want to triage.
+
+System message (recommended, if your API supports it): "You are a deterministic incident-triage JSON extractor. Always output exactly one raw JSON object matching the schema supplied. Do NOT include any additional text."
 
 ---
 
