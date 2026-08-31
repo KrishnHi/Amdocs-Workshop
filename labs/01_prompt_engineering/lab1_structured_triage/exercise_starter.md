@@ -1,8 +1,8 @@
 # Trainee Practical Assessment: Practical 1.1
 
-**Trainee Name**: ___________________________  
-**Employee ID**: ___________________________  
-**Date**: ___________________________  
+**Trainee Name**: __Krishna Hitnalikar__________  
+**Employee ID**: _____215677___________  
+**Date**: ________31/08/2026_________  
 
 ---
 
