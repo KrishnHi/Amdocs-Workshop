@@ -1,11 +1,24 @@
 import { db } from "../database/client";
 import { TaskRecord, CreateTaskPayload, UpdateTaskPayload, TaskStatus, TaskPriority } from "../models/task.model";
+import { AuditAction, AuditRecord } from "../models/audit.model";
 import { generateSecureToken } from "../../utils/crypto";
 import { logger } from "../../utils/logger";
+import { notificationService } from "./notification";
 
 export class TaskService {
   private getTable() {
     return db.getTable("tasks");
+  }
+
+  private emitAudit(taskId: string, action: AuditAction, payload?: Record<string, unknown>): void {
+    const audit: AuditRecord = {
+      id: `aud_${generateSecureToken(8)}`,
+      taskId,
+      action,
+      timestamp: new Date().toISOString(),
+      payload,
+    };
+    void notificationService.dispatchAuditEvent(audit);
   }
 
   public createTask(payload: CreateTaskPayload): TaskRecord {
@@ -26,6 +39,7 @@ export class TaskService {
 
     this.getTable().set(id, record as unknown as Record<string, unknown> & { id: string });
     logger.info(`[TaskService] Created task ${id}: ${record.title}`);
+    this.emitAudit(id, AuditAction.TASK_CREATED, { title: record.title });
     return record;
   }
 
@@ -70,6 +84,7 @@ export class TaskService {
 
     this.getTable().set(id, updated as unknown as Record<string, unknown> & { id: string });
     logger.info(`[TaskService] Updated task status ${id} -> ${newStatus}`);
+    this.emitAudit(id, AuditAction.STATUS_CHANGED, { status: newStatus });
     return updated;
   }
 
@@ -84,11 +99,16 @@ export class TaskService {
     };
 
     this.getTable().set(id, updated as unknown as Record<string, unknown> & { id: string });
+    this.emitAudit(id, AuditAction.TASK_UPDATED, { ...payload });
     return updated;
   }
 
   public deleteTask(id: string): boolean {
-    return this.getTable().delete(id);
+    const removed = this.getTable().delete(id);
+    if (removed) {
+      this.emitAudit(id, AuditAction.TASK_DELETED);
+    }
+    return removed;
   }
 
   /**
@@ -100,12 +120,17 @@ export class TaskService {
     priority?: TaskPriority,
     sinceDate?: string | Date
   ): TaskRecord[] {
-    // TODO: Trainees will shape autocomplete suggestions here in Lab 3.1
     const targetTimestamp = sinceDate ? new Date(sinceDate).getTime() : 0;
-    return tasks.filter((t) => {
-      const matchP = priority ? t.priority === priority : true;
-      const matchD = targetTimestamp ? new Date(t.created_at).getTime() >= targetTimestamp : true;
-      return matchP && matchD;
+
+    return tasks.filter((task) => {
+      const matchesPriority = priority ? task.priority === priority : true;
+      const createdAtTimestamp = new Date(task.created_at).getTime();
+      const matchesDate =
+        !isNaN(targetTimestamp) && targetTimestamp > 0
+          ? createdAtTimestamp >= targetTimestamp
+          : true;
+
+      return matchesPriority && matchesDate;
     });
   }
 }
